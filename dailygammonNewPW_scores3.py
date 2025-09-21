@@ -110,20 +110,20 @@ Core Concepts:
 # ============================================================
 # Streamlit-ready Script 1 (OpenPyXL / Pandas, secure login)
 # ============================================================
+
+import os
+import sys
+import re
+import requests
+from bs4 import BeautifulSoup
+import openpyxl
+import pandas as pd
+from dotenv import load_dotenv
+from datetime import datetime
+import streamlit as st
+import io
+
 def main():
-    import os
-    import sys
-    import re
-    import requests
-    from bs4 import BeautifulSoup
-    import openpyxl
-    import pandas as pd
-    from dotenv import load_dotenv
-    from datetime import datetime
-    import streamlit as st
-    import io
-
-
     # -----------------------------
     # Load credentials from .env
     # -----------------------------
