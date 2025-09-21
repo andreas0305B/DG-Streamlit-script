@@ -177,7 +177,6 @@ def main():
                 url = cell.hyperlink.target
                 player_id = url.rsplit("/", 1)[-1]
                 player_ids[name] = player_id
-    wb_xw.close()
 
     # -----------------------------
     # Secure login session
@@ -759,6 +758,7 @@ except ImportError:
 
     print("🏁 Script finished successfully")
     print("="*50)
+wb_xw.close()
 
 if __name__ == "__main__":
     main()
