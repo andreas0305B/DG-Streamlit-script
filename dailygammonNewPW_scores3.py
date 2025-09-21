@@ -128,8 +128,8 @@ def main():
     # Load credentials from .env
     # -----------------------------
     load_dotenv(dotenv_path="a.env")
-    DG_LOGIN = os.getenv("DG_LOGIN", "")
-    DG_PW = os.getenv("DG_PW", "")
+    DG_LOGIN = os.getenv("DG_LOGIN")
+    DG_PW = os.getenv("DG_PW")
 
     login_url = "http://dailygammon.com/bg/login"
     payload = {
