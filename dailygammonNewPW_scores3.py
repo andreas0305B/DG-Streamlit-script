@@ -733,32 +733,34 @@ def main():
     #if AUTO_MODE:
     #    wb_xw.close()
 
-# ============================================================
-# Optional: Persistenz im Streamlit-Cloud-Umfeld
-# ============================================================
+    # ============================================================
+    # Optional: Persistenz im Streamlit-Cloud-Umfeld
+    # ============================================================
+    # -----------------------------
+    # Streamlit / Speicher Block
+    # -----------------------------
+    try:
+        # Excel-Workbook in Memory speichern
+        excel_bytes = io.BytesIO()
+        wb_xw.save(excel_bytes)   # Änderungen in BytesIO speichern
+        excel_bytes.seek(0)        # Pointer zurücksetzen
 
-try:
-    # Excel-Workbook in Memory speichern
-    excel_bytes = io.BytesIO()
-    wb_xw.save(excel_bytes)   # Änderungen in BytesIO speichern
-    excel_bytes.seek(0)        # Pointer zurücksetzen
+        # Download-Button in Streamlit anzeigen
+        st.download_button(
+            label=f"📥 Geänderte Datei {file} herunterladen",
+            data=excel_bytes,
+            file_name=file,
+            mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        )
 
-    # Download-Button in Streamlit anzeigen
-    st.download_button(
-        label=f"📥 Geänderte Datei {file} herunterladen",
-        data=excel_bytes,
-        file_name=file,
-        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-    )
+    except ImportError:
+        # Lokaler Run ohne Streamlit
+        wb_xw.save(file)
+        print(f"💾 Excel-Datei lokal gespeichert: {file}")
 
-except ImportError:
-    # Lokaler Run ohne Streamlit
-    wb_xw.save(file)
-    print(f"💾 Excel-Datei lokal gespeichert: {file}")
-
-    print("🏁 Script finished successfully")
-    print("="*50)
-wb_xw.close()
+    finally:
+        wb_xw.close()
+        print("🏁 Script finished successfully")
 
 if __name__ == "__main__":
     main()
