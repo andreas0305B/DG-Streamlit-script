@@ -163,7 +163,7 @@ def main():
     # -----------------------------
     # Read players from Excel
     # -----------------------------
-    wb_xw = openpyxl.load_workbook(file, data_only=True)
+    wb_xw = openpyxl.load_workbook(file)
     ws_players = wb_xw["Players"]
 
     players = []
