@@ -147,7 +147,7 @@ def main():
     if len(sys.argv) > 1:
         liga = sys.argv[1]
     else:
-        liga = "4d"  # default league
+        liga = "4c"  # default league
 
     AUTO_MODE = "--auto" in sys.argv
 
@@ -764,3 +764,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
